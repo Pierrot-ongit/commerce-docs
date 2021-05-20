@@ -67,6 +67,8 @@ class CartEventSubscriber implements EventSubscriberInterface {
    *
    * @param \Drupal\Core\Messenger\MessengerInterface $messenger
    *   The messenger.
+   * @param \Drupal\commerce_cart\CartManagerInterface $cart_manager
+   *   Cart manager.
    */
   public function __construct(MessengerInterface $messenger, CartManagerInterface $cart_manager) {
     $this->messenger = $messenger;
@@ -87,8 +89,6 @@ class CartEventSubscriber implements EventSubscriberInterface {
    *
    * @param \Drupal\commerce_cart\Event\CartEntityAddEvent $event
    *   The cart add event.
-   *
-   * @throws \Drupal\Core\TypedData\Exception\ReadOnlyException
    */
   public function addToCart(CartEntityAddEvent $event) {
     /** @var \Drupal\commerce_product\Entity\ProductVariationInterface $product_variation */
